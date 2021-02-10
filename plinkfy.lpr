@@ -15,16 +15,18 @@ var
 begin
   for i := 1 to paramCount() do
   begin
-    old := paramStr(i);
-    name := ExtractFileName(old);
-    path := ExtractFilePath(old);
-    new := Trim(LowerCase(name));
-    new := StringReplace(new, ' ', '_', [rfReplaceAll]);
-    while Pos('__', new) > 0 do
-    begin
-      new := StringReplace(new, '__', '_', [rfReplaceAll]);
+  	if FileExists(paramStr(i)) then begin
+      old := paramStr(i);
+      name := ExtractFileName(old);
+      path := ExtractFilePath(old);
+      new := Trim(LowerCase(name));
+      new := StringReplace(new, ' ', '_', [rfReplaceAll]);
+      while Pos('__', new) > 0 do
+      begin
+        new := StringReplace(new, '__', '_', [rfReplaceAll]);
+      end;
+      RenameFile(old, path + new);
     end;
-    RenameFile(old, path + new);
-  end;
+	end;
 end.
 
