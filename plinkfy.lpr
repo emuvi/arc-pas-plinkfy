@@ -15,7 +15,7 @@ var
 begin
   for i := 1 to paramCount() do
   begin
-  	if FileExists(paramStr(i)) then begin
+    if FileExists(paramStr(i)) then begin
       old := paramStr(i);
       name := ExtractFileName(old);
       path := ExtractFilePath(old);
@@ -27,6 +27,6 @@ begin
       end;
       RenameFile(old, path + new);
     end;
-	end;
+  end;
 end.
 
