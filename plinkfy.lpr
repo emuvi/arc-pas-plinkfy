@@ -26,6 +26,7 @@ begin
       begin
         new := StringReplace(new, '__', '_', [rfReplaceAll]);
       end;
+      new := Utf8ToAnsi(new);
       RenameFile(old, path + new);
     end;
   end;
